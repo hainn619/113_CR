@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+
+{% block title %}Articles{% endblock title %}
+
+{% block content %} 
+<h1>Articles</h1>
+<div class="row">
+    <div class="col-sm-6">
+        {% for art in article_list %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Post # {{ art.id }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ art.title }}</h6>
+                <p class="card-text">{{ art.subtitle|truncatechars:500 }}</p>
+                <p> Created on: {{ art.created_on }}</p>
+                
+                <a href="{% url 'article_detail' art.id %}" class="btn btn-primary">Read more</a>
+               
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %} 

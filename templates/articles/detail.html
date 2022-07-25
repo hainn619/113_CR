@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+
+{% block title %}{{ article.title }}{% endblock title %} 
+
+{% block content %} 
+
+<h1>{{ article.title }}</h1> <span> Created on: {{ article.created_on }}</span>
+<h6>{{ article.subtitle }}</h6>
+<p>{{ article.body }}</p>
+{% if user.is_authenticated %}
+<p><a class="btn btn-primary" href="{% url 'article_update' article.id %}"> Update</a></p>
+<p><a class="btn btn-danger" href="{% url 'article_delete'  article.id %}"> Delete</a></p>
+{% endif %}
+
+{% endblock content %}
